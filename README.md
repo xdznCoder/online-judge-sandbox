@@ -48,3 +48,8 @@
 ------
 
 ~~(ps:先画饼，还在研究源码，具体实现还需等待........)~~
+
+资源板：
+
+1. 青岛大学 Online Judge 文档 https://opensource.qduoj.com/#/judger/how_it_works 
+2. criyle 个人博客 https://criyle.github.io/
