@@ -1,4 +1,4 @@
-package DockerBuilder
+package Builder
 
 import (
 	"context"
