@@ -21,9 +21,9 @@ func getContext(path string) io.Reader {
 	return ctx
 }
 
-// newImage create new container for the code to be
+// NewImage create new container for the code to be
 // compiled and run.
-func newImage(cli *client.Client, imageName string) error {
+func NewImage(cli *client.Client, imageName string) error {
 	ctx := context.Background()
 	if cli == nil {
 		cli, _ = client.NewClientWithOpts(client.FromEnv, client.WithAPIVersionNegotiation())
