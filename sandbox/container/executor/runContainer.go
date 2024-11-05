@@ -5,6 +5,8 @@ import (
 	"context"
 	"github.com/docker/docker/api/types/container"
 	"github.com/docker/docker/client"
+	"io"
+	"log"
 )
 
 func runContainer(ctx context.Context, cli *client.Client, ID string) (string, error) {
@@ -22,7 +24,12 @@ func runContainer(ctx context.Context, cli *client.Client, ID string) (string, e
 
 	// capture container logs
 	out, err := cli.ContainerLogs(ctx, ID, container.LogsOptions{ShowStdout: true})
-	defer out.Close()
+	defer func(out io.ReadCloser) {
+		err := out.Close()
+		if err != nil {
+			log.Println(err)
+		}
+	}(out)
 	if err != nil {
 		return "", err
 	}
