@@ -1,4 +1,4 @@
-package Build
+package container
 
 import (
 	"context"
@@ -37,7 +37,7 @@ func NewImage(cli *client.Client, imageName string) error {
 		CPUSetCPUs: config.DefaultCPUSetCPUs,
 		Memory:     config.DefaultMemory,
 		ShmSize:    config.DefaultSharedMemory,
-		Dockerfile: "../docker/Dockerfile",
+		Dockerfile: "docker/Dockerfile",
 	}
 
 	resp, err := cli.ImageBuild(ctx, dockerCtx, opt)
