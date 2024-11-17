@@ -65,6 +65,8 @@ func (data *CodeData) toFile() error {
 // with the given code and limit, Run can start a docker container,
 // execute the code and get the result.
 func (data *CodeData) Run(cli *client.Client) CodeResult {
+
+	// Create new cli
 	cli, err := client.NewClientWithOpts(client.FromEnv, client.WithAPIVersionNegotiation())
 	ctx := context.Background()
 

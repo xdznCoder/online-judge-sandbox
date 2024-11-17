@@ -1,4 +1,4 @@
-package Builder
+package Build
 
 import (
 	"context"
@@ -30,14 +30,14 @@ func NewImage(cli *client.Client, imageName string) error {
 	}
 
 	_, basePath, _, _ := runtime.Caller(0)
-	dockerCtx := getContext(filepath.Dir(basePath) + "/docker")
+	dockerCtx := getContext(filepath.Dir(basePath))
 
 	opt := types.ImageBuildOptions{
 		Tags:       []string{imageName},
 		CPUSetCPUs: config.DefaultCPUSetCPUs,
 		Memory:     config.DefaultMemory,
 		ShmSize:    config.DefaultSharedMemory,
-		Dockerfile: "Dockerfile",
+		Dockerfile: "../docker/Dockerfile",
 	}
 
 	resp, err := cli.ImageBuild(ctx, dockerCtx, opt)

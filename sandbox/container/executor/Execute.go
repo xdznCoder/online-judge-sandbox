@@ -24,6 +24,7 @@ func Execute(ctx context.Context, cli *client.Client, image string, language str
 		exec = fmt.Sprintf("/tests/evaluate %v %v %v %v", count, timeLimit, memLimit, program)
 	}
 
+	// Creating namespace for container mode failed: Invalid argument.
 	resp, err := cli.ContainerCreate(ctx, &container.Config{
 		Image: image,
 		Cmd:   []string{"/bin/bash", "-c", exec},

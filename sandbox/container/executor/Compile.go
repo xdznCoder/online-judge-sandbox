@@ -28,7 +28,7 @@ func Compile(ctx context.Context, cli *client.Client, image string,
 				{
 					Type:   mount.TypeBind,
 					Source: path,
-					Target: "tests/data",
+					Target: "/tests/data",
 				},
 			},
 		}, nil, nil, "")

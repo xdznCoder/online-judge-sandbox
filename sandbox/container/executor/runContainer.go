@@ -3,6 +3,7 @@ package executor
 import (
 	"bytes"
 	"context"
+	"fmt"
 	"github.com/docker/docker/api/types/container"
 	"github.com/docker/docker/client"
 	"io"
@@ -13,6 +14,7 @@ func runContainer(ctx context.Context, cli *client.Client, ID string) (string, e
 	if err := cli.ContainerStart(ctx, ID, container.StartOptions{}); err != nil {
 		return "", err
 	}
+
 	statusCh, errCh := cli.ContainerWait(ctx, ID, container.WaitConditionNotRunning)
 	select {
 	case err := <-errCh:
@@ -40,6 +42,7 @@ func runContainer(ctx context.Context, cli *client.Client, ID string) (string, e
 		return "", err
 	}
 	res := buffer.String()
+	fmt.Println(res)
 
 	// close the container
 	err = cli.ContainerRemove(ctx, ID, container.RemoveOptions{})

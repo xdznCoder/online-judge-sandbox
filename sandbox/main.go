@@ -5,7 +5,7 @@ import (
 	"log"
 	"os"
 	"path/filepath"
-	"xdznOJ/sandbox/container/Builder"
+	"xdznOJ/sandbox/container/Build"
 	"xdznOJ/sandbox/runner"
 )
 
@@ -13,7 +13,7 @@ var cli *client.Client
 
 func init() {
 	cli, _ := client.NewClientWithOpts(client.FromEnv, client.WithAPIVersionNegotiation())
-	err := Builder.NewImage(cli, "runner:latest")
+	err := Build.NewImage(cli, "runner:latest")
 
 	if err != nil {
 		log.Fatal(err)
@@ -55,5 +55,5 @@ func main() {
 		panic(err)
 	}
 	code := string(cfile)
-	test(code, "test", "test.c")
+	test(code, "c", "test.c")
 }
