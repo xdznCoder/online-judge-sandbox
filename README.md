@@ -2,8 +2,6 @@
 
 ## 在线判题系统沙盒
 
-------
-
 项目主体参考 [github.com/codeIIEST/test-runner](https://github.com/codeIIEST/test-runner)，以及 [github.com/criyle/go-sandbox](https://github.com/criyle/go-sandbox) 与 [github.com/criyle/go-judge](https://github.com/criyle/go-judge) 等 的开源项目，为xdznOJ提供判题服务与代码运行沙箱。
 
 ### 需求分析：
@@ -18,7 +16,15 @@
 
 ------
 
-~~(ps:先画饼，还在研究源码，具体实现还需等待........)~~
+## 当前进度：
+
+当前沙盒主体已经完成，但`Docker SDK for Go`的调用存在一定困难，可能是`linux`系统的`sys/fs/cgroup`调用失败或其他原因。
+
+这个`bug`一直存在，正在尝试解决并部署沙盒。
+
+在解决该瓶颈之后项目基本无其他瓶颈。
+
+------
 
 资源板：
 
